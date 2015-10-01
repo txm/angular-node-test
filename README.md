@@ -3,7 +3,9 @@ The Apps team at Sky are pleased to send you this unattended test. This means we
 
 ## Pre-Interview Developer Test
 
-Please clone this repository before commencing development. Once complete please provide a link to your repository. We’d like to understand your approach as well as how great your work is, so please don’t simply commit all of your work in a single chunk.
+The test duration 3 hours.
+
+If you could fork the Git repo, do an initial commit when you start, complete as much of the work outlined in the readme in the timeframe and send us back your solution that'd be great. Once complete please provide a link to your repository. We’d like to understand your approach as well as how great your work is, so please don’t simply commit all of your work in a single chunk.
 
 Your solution will be evaluated on implementation of the below requirements, code maintainability, code clarity, and software development best practices. We would urge you to treat this like a mini-project and follow whatever Agile/TDD/BDD/etc approach you would use on any other project. Once reviewed, we will ask you to delete (or make private) your repository once we have reviewed your code.
 

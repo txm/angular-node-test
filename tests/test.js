@@ -126,9 +126,25 @@ describe('check create user exists', function(){
 })
 
 
+describe('authpage', function(){
+  it('should respond AUTH_FAILURE to GET',function(){
+    superagent
+      .get('http://localhost:'+port+'/admin/feed')
+      .end(function(res){
+        expect(res.status).to.equal(403)
+    })
+  })
+})
+
+
 
 
 // TODO create test for login
+
+//
+// I don't have ANY experience with BDD - if this is what is required here
+//
+
 // login OK: The usernames 'user', 'manager', 'admin', 'developer', 'tester', with the password 'password' should be authenticated.
 // login KO: Eg, username 'john.smith' can never authenticate. Usernames should be case-insensitive, passwords should be case-sensitive.
 
@@ -168,5 +184,16 @@ describe('logout page when logged in', function(){
 
 
 
+
+describe('authpage', function(){
+  it('after admin login, should respond AUTH_SUCCESS to GET',function(){
+    superagent
+      .get('http://localhost:'+port+'/admin/feed')
+      .end(function(res){
+        expect(res.status).to.equal(200)
+        // TODO check body feed of: IP, Datetime, Action, Username
+    })
+  })
+})
 
 

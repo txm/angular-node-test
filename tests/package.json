@@ -5,6 +5,7 @@
   "main": "test.js",
   "dependencies": {
     "mocha": "^2.3.3",
+    "mongoose": "^4.2.3",
     "superagent": "^1.4.0"
   },
   "devDependencies": {

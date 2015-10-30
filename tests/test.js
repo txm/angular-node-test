@@ -52,8 +52,80 @@ describe('logout page when not logged in', function(){
 })
 
 
-// TODO create test to call tools/create-user.js
+
+/*
+
+// TODO fugly - helper script needs to be integrated
+// to return success/failure and
+// handle paths
+describe('exec tools/create-user', function(){
+  it('check STDOUT for response ;(',function(){
+
+    var cp = require('child_process')
+    var n = cp.fork('../tools/create-user.js')
+
+    n.on('message', function(m) {
+      console.log('PARENT got message:', m)
+      //expect(res.status).to.equal(200)
+    })
+
+  })
+})
+
+*/
+
+var mongoose = require('mongoose')
+var dbConfig = require('././../server/db')
+var User = require('././../server/models/user')
+
 // TODO create test to query MongoDB to be sure create-user worked
+describe('check create user exists', function(){
+  it('check MongoDB for test user',function(){
+
+    before(function(done) {
+      db = mongoose.connect(dbConfig.url)
+      done()
+    })
+
+    after(function(done) {
+      mongoose.connection.close()
+      done()
+    })
+
+
+    beforeEach(function(done) {
+      var account = new User({
+        username: 'testuser',
+        password: 'testuserpass'
+      })
+
+      account.save(function(error) {
+        if (error) console.log('error' + error.message)
+        else console.log('no error')
+        done()
+      })
+    })
+
+
+    it('find a user by username', function(done) {
+      User.findOne({ username: 'testuser' }, function(err, account) {
+        account.username.should.eql('testuser')
+        console.log("   username: ", account.username)
+        expect(account.username).to.equal('testuser')
+        done()
+      })
+    })
+
+    afterEach(function(done) {
+      User.remove({}, function() {
+        done()
+      })
+    })
+
+  })
+})
+
+
 
 
 // TODO create test for login

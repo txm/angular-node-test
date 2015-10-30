@@ -1,0 +1,28 @@
+{
+  "name": "tests",
+  "version": "1.0.0",
+  "description": "angular-node-test",
+  "main": "test.js",
+  "dependencies": {
+    "mocha": "^2.3.3"
+  },
+  "devDependencies": {
+    "mocha": "^2.3.3"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/txm/angular-node-test.git"
+  },
+  "keywords": [
+    "SKY"
+  ],
+  "author": "\"Andrew McGregor\" <andy@txm.net>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/txm/angular-node-test/issues"
+  },
+  "homepage": "https://github.com/txm/angular-node-test#readme"
+}

@@ -11,6 +11,21 @@ describe('Array', function() {
 })
 
 
+var port = 3000
+var superagent = require('superagent')
+
+describe('homepage', function(){
+  it('should respond AUTH_FAILURE to GET',function(){
+    superagent
+      .get('http://localhost:'+port)
+      .end(function(res){
+        expect(res.status).to.equal(403)
+    })
+  })
+})
+
+
+
 
 
 

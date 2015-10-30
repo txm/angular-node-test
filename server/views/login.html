@@ -1,13 +1,25 @@
-<form action="/login" method="post">
-    <div>
+<html>
+  <head>
+    <title>Sky App</title>
+    <script src="angular2.sfx.dev.js"></script>
+    <script src="app.js"></script>
+  </head>
+  <body>
+    <my-app></my-app>
+
+    <form action="/login" method="post">
+      <div>
         <label>Username:</label>
         <input type="text" name="username"/>
-    </div>
-    <div>
+      </div>
+      <div>
         <label>Password:</label>
         <input type="password" name="password"/>
-    </div>
-    <div>
+      </div>
+      <div>
         <input type="submit" value="Log In"/>
-    </div>
-</form>
+      </div>
+    </form>
+
+  </body>
+</html>

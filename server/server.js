@@ -14,6 +14,8 @@ require('./passport/init')
 
 mongoose.connect(dbConfig.url)
 
+app.use(express.static('static'));
+
 
 app.engine('html', require('ejs').renderFile)
 

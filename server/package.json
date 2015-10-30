@@ -21,6 +21,7 @@
   "homepage": "https://github.com/txm/angular-node-test#readme",
   "dependencies": {
     "express": "^4.13.3",
+    "express-session": "^1.12.1",
     "mongodb": "^2.0.47",
     "mongoose": "^4.2.3",
     "passport": "^0.3.0",

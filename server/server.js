@@ -3,19 +3,42 @@ var app = express()
 // var forceSSL = require('express-force-ssl')
 
 var passport = require('passport')
-  , LocalStrategy = require('passport-local').Strategy
+var LocalStrategy = require('passport-local').Strategy
+var expressSession = require('express-session')
 
+var mongoose = require('mongoose')
+
+var dbConfig = require('./db.js')
+
+require('./passport/init')
+
+mongoose.connect(dbConfig.url)
+
+
+app.use(expressSession({secret: 'mySecretKey'}))
 app.use(passport.initialize())
+app.use(passport.session())
 
 
-passport.use(new LocalStrategy({
-    usernameField: 'email',
-    passwordField: 'passwd'
-  },
-  function(username, password, done) {
-    // ...
-  }
-))
+// TODO refactor
+
+var isAuthenticated = function (req, res, next) {
+  if (req.isAuthenticated())
+    return next()
+  res.redirect('/login')
+}
+
+
+
+passport.serializeUser(function(user, done) {
+  done(null, user._id)
+})
+ 
+passport.deserializeUser(function(id, done) {
+  User.findById(id, function(err, user) {
+    done(err, user)
+  })
+})
 
 
 app.post('/login', passport.authenticate('local', {
@@ -31,17 +54,14 @@ app.get('/login', function (req, res) {
 
 
 app.get('/logout', function (req, res) {
-  // force logout
-  res.send('Hello logout!')
+  req.logout()
+  res.redirect('/')
 })
 
 
-app.get('/', function (req, res) {
-  // If logged out then redirect to /login
-  // else display Angular app
-  res.send('Hello World!')
+app.get('/', isAuthenticated, function (req, res) {
+  res.send('Hello ' + req.user)
 })
-
 
 
 var server = app.listen(3000, function () {

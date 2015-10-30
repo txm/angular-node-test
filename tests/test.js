@@ -11,20 +11,84 @@ describe('Array', function() {
 })
 
 
+//
+// TODO: these tests still seem to be optimistic
+//
+
 var port = 3000
 var superagent = require('superagent')
 
-describe('homepage', function(){
-  it('should respond AUTH_FAILURE to GET',function(){
+describe('homepage when not logged in', function(){
+  it('should respond redirect to /login on GET',function(){
     superagent
       .get('http://localhost:'+port)
       .end(function(res){
-        // TODO this test passes when it should fail :(
-        expect(res.status).to.equal(403)
+        // TODO redirects are triggering a double callback
+        expect(res.status).to.equal(302) // or is it 303 thesedays?
       })
   })
 })
 
+
+describe('login page when not logged in', function(){
+  it('should respond 200 to GET',function(){
+    superagent
+      .get('http://localhost:'+port+'/login')
+      .end(function(res){
+        expect(res.status).to.equal(200)
+      })
+  })
+})
+
+
+describe('logout page when not logged in', function(){
+  it('should redirect to / on GET',function(){
+    superagent
+      .get('http://localhost:'+port+'/logout')
+      .end(function(res){
+        expect(res.status).to.equal(200)
+      })
+  })
+})
+
+
+// TODO create test for login
+// login OK: The usernames 'user', 'manager', 'admin', 'developer', 'tester', with the password 'password' should be authenticated.
+// login KO: Eg, username 'john.smith' can never authenticate. Usernames should be case-insensitive, passwords should be case-sensitive.
+
+
+describe('homepage when logged in', function(){
+  it('should respond AUTH_FAILURE to GET',function(){
+    superagent
+      .get('http://localhost:'+port)
+      .end(function(res){
+        expect(res.status).to.equal(200)
+      })
+  })
+})
+
+
+
+describe('login page when logged in', function(){
+  it('should redirect to / on GET',function(){
+    superagent
+      .get('http://localhost:'+port+'/login')
+      .end(function(res){
+        expect(res.status).to.equal(302)
+      })
+  })
+})
+
+
+describe('logout page when logged in', function(){
+  it('should redirect to /login on GET',function(){
+    superagent
+      .get('http://localhost:'+port+'/logout')
+      .end(function(res){
+        expect(res.status).to.equal(302)
+      })
+  })
+})
 
 
 

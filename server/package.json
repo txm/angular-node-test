@@ -21,6 +21,7 @@
   "homepage": "https://github.com/txm/angular-node-test#readme",
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",
+    "ejs": "^2.3.4",
     "express": "^4.13.3",
     "express-session": "^1.12.1",
     "mongodb": "^2.0.47",

@@ -1,3 +1,5 @@
+// TODO integrate tests with server app
+
 // basic test to test tests
 
 var assert = require('assert')

@@ -15,6 +15,8 @@ require('./passport/init')
 mongoose.connect(dbConfig.url)
 
 
+app.engine('html', require('ejs').renderFile)
+
 app.use(expressSession({secret: 'mySecretKey'}))
 app.use(passport.initialize())
 app.use(passport.session())
@@ -48,14 +50,19 @@ app.post('/login', passport.authenticate('local', {
 
 
 app.get('/login', function (req, res) {
-  // force login
-  res.send('Hello login!')
+  res.render('login.html')
 })
 
 
 app.get('/logout', function (req, res) {
   req.logout()
   res.redirect('/')
+})
+
+app.get('/admin/feed', isAuthenticated, function (req, res) {
+  // read from Mongo and print as CSV
+  // IP, Datetime, Action, Username
+  res.render('index.html')
 })
 
 

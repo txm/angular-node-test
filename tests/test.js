@@ -19,8 +19,9 @@ describe('homepage', function(){
     superagent
       .get('http://localhost:'+port)
       .end(function(res){
+        // TODO this test passes when it should fail :(
         expect(res.status).to.equal(403)
-    })
+      })
   })
 })
 

@@ -52,6 +52,10 @@ describe('logout page when not logged in', function(){
 })
 
 
+// TODO create test to call tools/create-user.js
+// TODO create test to query MongoDB to be sure create-user worked
+
+
 // TODO create test for login
 // login OK: The usernames 'user', 'manager', 'admin', 'developer', 'tester', with the password 'password' should be authenticated.
 // login KO: Eg, username 'john.smith' can never authenticate. Usernames should be case-insensitive, passwords should be case-sensitive.

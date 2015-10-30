@@ -1,0 +1,10 @@
+A little under 3 hours (incl breaks).  I'm spending the remaining time documenting for brownie points :)
+
+* integrate tests App into server App
+* execute tests as part of npm/package.json
+* fix tests so they actually run and don't return false positives
+* fix auth from /login
+* save auth attempts to Mongo
+* export auth attempts to feed
+* refactor/create modules
+* learn BDD
